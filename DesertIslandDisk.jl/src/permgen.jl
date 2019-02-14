@@ -1,5 +1,5 @@
 # This seems to work on its own, the push is using a hidden name or the reference is not updated
-
+# solution was pushing a copy of the array to P.
 
 function permgen(X,n)
     
@@ -9,7 +9,7 @@ function permgen(X,n)
         end
         println()
 
-        push!(P,X)   # this is not pushing the current values of X into P
+        push!(P,X)   # this is not pushing the current values of X into P. reference outer scope?
 
     else
         for i = 1:n
@@ -20,7 +20,7 @@ function permgen(X,n)
                 X[1], X[n] = X[n], X[1]
             end
         end
-        # permgen(X,n-1)
+        # permgen(X,n-1)  # apparently this is incorrectly called
     end
 end
 

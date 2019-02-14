@@ -1,5 +1,5 @@
 # todo: would like to accept a string or array
-# todo: pushing into a set would be a way to ensure uniqueness, but set have no index
+#       split(A,"",keepempty=false) can split characters of string
 # todo: limit length of A to n = 9, n! is size of output -> 362880 permutations
 
 """
@@ -19,43 +19,46 @@ julia> permutations(A)
 ```
 """    
 function permutations(A)
-# todo: is a set the best object to manage uniqueness?
 #    info("collection not tested for member uniqueness")
-
-    N = length(A)
+    
+    B = unique!(copy(A))            # original object unchanged
+    N = length(B)
     P = []
 
     function generate(X,n)
-        println("n: $n    A1: $(X[1])   An: $(X[n])")
         
         if n == 1
 
-            println("pushing A1: $(X[1])  An: $(X[n])") 
-            push!(P,X)
+            push!(P,copy(X))        # rather than nest the references until final evaluation
 
         else
             for i = 1:n
-                println("loop n: $n   i: $i    A1: $(X[1])  Ai:  $(X[i])  An: $(X[n])")
                 generate(X,n-1)
+
                 if iseven(n)
                     X[i], X[n] = X[n], X[i]
                 else
                     X[1], X[n] = X[n], X[1]
                 end
-                println("swapped    A1: $(X[1])  Ai:  $(X[i])   An: $(X[n])")
             end
-            # generate(X,n-1)
+            # generate(X,n-1)       # this is an error apparently
         end
     end
 
-    generate(A,N)
+    generate(B,N)
 
     return P
 end
 
 
-
-
+#= tests
+AA = ['M','M','K']
+A = ['M','K']
+a = ['M']
+B = ['M', 'K', 'S']
+BB = ['M', 'K', 'S', 'S']
+C = ['M', 'K', 'S', 'E']
+=#
 
 #= pseudocode
 procedure generate(n : integer, A : array of any):

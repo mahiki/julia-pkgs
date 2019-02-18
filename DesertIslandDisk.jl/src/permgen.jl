@@ -1,5 +1,6 @@
 # This seems to work on its own, the push is using a hidden name or the reference is not updated
 # solution was pushing a copy of the array to P.
+# permutations.jl has a working solution
 
 function permgen(X,n)
     

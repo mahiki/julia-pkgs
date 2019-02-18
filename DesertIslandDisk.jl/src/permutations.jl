@@ -1,7 +1,7 @@
 # todo: would like to accept a string or array
 #       split(A,"",keepempty=false) can split characters of string
 # todo: limit length of A to n = 9, n! is size of output -> 362880 permutations
-
+# todo: could make n an optional argument to the outer function, and branch instead of nest
 """
     permutations(A)
 

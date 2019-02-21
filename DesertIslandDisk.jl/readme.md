@@ -1,4 +1,6 @@
 ## DesertIslandDisk
+**todo**
+
 - a first package in development
 - just a collection of things I want to test or implement
 - learn module/package paradigm
